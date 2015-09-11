@@ -1,5 +1,6 @@
 package com.ankit.verticalrecyclerviewinsidehorizontalrecyclerview;
 
+import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,8 +14,7 @@ import java.util.List;
  * Created by ankitjain on 11/09/15.
  */
 public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecyclerViewHolder> {
-    //List<Person> persons;
-    LinearLayoutManager llm1;
+    Context context;
 
     public static class HoriRecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -23,14 +23,14 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecycl
 
         HoriRecyclerViewHolder(View itemView) {
             super(itemView);
-            recyclerView = (RecyclerView) itemView.findViewById(R.id.hori_rv);
+            recyclerView = (RecyclerView) itemView.findViewById(R.id.hori_rv1);
         }
 
 
     }
 
-    VertRVAdapter(LinearLayoutManager llm1) {
-        this.llm1 = llm1;
+    VertRVAdapter(Context context) {
+        this.context = context;
 
 
     }
@@ -42,7 +42,7 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecycl
 
     @Override
     public HoriRecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycleview_item, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.hori, viewGroup, false);
         HoriRecyclerViewHolder pvh = new HoriRecyclerViewHolder(v);
         return pvh;
     }
@@ -55,14 +55,17 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecycl
         persons.add(new Person("Lavery Maiss", "25 years old", R.drawable.lavery));
         persons.add(new Person("Lillie Watts", "35 years old", R.drawable.lillie));
         HoriRVAdapter adapter = new HoriRVAdapter(persons);
+        LinearLayoutManager llm1 = new LinearLayoutManager(context);
+        llm1.setOrientation(LinearLayoutManager.HORIZONTAL);
+
         horiRecyclerViewHolder.recyclerView.setLayoutManager(llm1);
-        horiRecyclerViewHolder.recyclerView.setHasFixedSize(true);
+        horiRecyclerViewHolder.recyclerView.setLayoutParams(new RecyclerView.LayoutParams(600, 300));
         horiRecyclerViewHolder.recyclerView.setAdapter(adapter);
 
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return 3;
     }
 }

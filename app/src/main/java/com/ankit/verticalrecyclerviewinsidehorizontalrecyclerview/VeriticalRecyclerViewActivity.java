@@ -1,6 +1,7 @@
 package com.ankit.verticalrecyclerviewinsidehorizontalrecyclerview;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,21 +16,17 @@ public class VeriticalRecyclerViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.recyclerview_activity);
         rv = (RecyclerView) findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(llm);
-        rv.setHasFixedSize(true);
-        LinearLayoutManager llm1 = new LinearLayoutManager(this);
-        llm1.setOrientation(LinearLayoutManager.HORIZONTAL);
-        initializeAdapter(llm1);
+        initializeAdapter(this);
     }
 
 
-    private void initializeAdapter(LinearLayoutManager llm1) {
-        VertRVAdapter adapter = new VertRVAdapter(llm1);
+    private void initializeAdapter(Context context) {
+        VertRVAdapter adapter = new VertRVAdapter(context);
         rv.setAdapter(adapter);
     }
 }
