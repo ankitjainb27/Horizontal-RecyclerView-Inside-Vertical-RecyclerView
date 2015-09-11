@@ -20,7 +20,7 @@ public class RecyclerViewActivity extends Activity {
         setContentView(R.layout.recyclerview_activity);
         rv = (RecyclerView) findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-      //  llm.setOrientation(LinearLayoutManager.HORIZONTAL);
+        //llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
