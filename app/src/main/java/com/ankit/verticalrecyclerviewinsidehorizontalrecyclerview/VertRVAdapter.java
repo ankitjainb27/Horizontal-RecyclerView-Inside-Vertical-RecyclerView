@@ -1,6 +1,5 @@
 package com.ankit.verticalrecyclerviewinsidehorizontalrecyclerview;
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,8 +13,8 @@ import java.util.List;
  * Created by ankitjain on 11/09/15.
  */
 public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecyclerViewHolder> {
-    static List<Person> persons;
-    static Context context;
+    //List<Person> persons;
+    LinearLayoutManager llm1;
 
     public static class HoriRecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -25,24 +24,15 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecycl
         HoriRecyclerViewHolder(View itemView) {
             super(itemView);
             recyclerView = (RecyclerView) itemView.findViewById(R.id.hori_rv);
-            LinearLayoutManager llm = new LinearLayoutManager(context);
-            llm.setOrientation(LinearLayoutManager.HORIZONTAL);
-            recyclerView.setLayoutManager(llm);
-            recyclerView.setHasFixedSize(true);
-            initializeData();
-
         }
 
-        private void initializeData() {
-            persons = new ArrayList<>();
-            persons.add(new Person("Emma Wilson", "23 years old", R.drawable.emma));
-            persons.add(new Person("Lavery Maiss", "25 years old", R.drawable.lavery));
-            persons.add(new Person("Lillie Watts", "35 years old", R.drawable.lillie));
-        }
+
     }
 
-    VertRVAdapter(Context context) {
-        this.context = context;
+    VertRVAdapter(LinearLayoutManager llm1) {
+        this.llm1 = llm1;
+
+
     }
 
     @Override
@@ -59,13 +49,20 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecycl
 
     @Override
     public void onBindViewHolder(HoriRecyclerViewHolder horiRecyclerViewHolder, int i) {
+        List<Person> persons;
+        persons = new ArrayList<>();
+        persons.add(new Person("Emma Wilson", "23 years old", R.drawable.emma));
+        persons.add(new Person("Lavery Maiss", "25 years old", R.drawable.lavery));
+        persons.add(new Person("Lillie Watts", "35 years old", R.drawable.lillie));
         HoriRVAdapter adapter = new HoriRVAdapter(persons);
+        horiRecyclerViewHolder.recyclerView.setLayoutManager(llm1);
+        horiRecyclerViewHolder.recyclerView.setHasFixedSize(true);
         horiRecyclerViewHolder.recyclerView.setAdapter(adapter);
 
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 1;
     }
 }
