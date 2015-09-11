@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".RecyclerViewActivity">
+        <activity android:name=".VeriticalRecyclerViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

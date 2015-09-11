@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> {
+public class HoriRVAdapter extends RecyclerView.Adapter<HoriRVAdapter.PersonViewHolder> {
 
     public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
@@ -28,9 +28,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
         }
     }
 
+
     List<Person> persons;
 
-    RVAdapter(List<Person> persons){
+    HoriRVAdapter(List<Person> persons){
         this.persons = persons;
     }
 

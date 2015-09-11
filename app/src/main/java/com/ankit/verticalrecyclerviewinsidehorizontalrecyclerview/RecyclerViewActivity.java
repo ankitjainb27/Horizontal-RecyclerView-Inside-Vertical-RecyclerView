@@ -36,7 +36,7 @@ public class RecyclerViewActivity extends Activity {
     }
 
     private void initializeAdapter() {
-        RVAdapter adapter = new RVAdapter(persons);
+        HoriRVAdapter adapter = new HoriRVAdapter(persons);
         rv.setAdapter(adapter);
     }
 }
