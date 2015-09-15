@@ -3,6 +3,7 @@ package com.ankit.verticalrecyclerviewinsidehorizontalrecyclerview;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecyclerViewHolder> {
     Context context;
+    DisplayMetrics metrics;
 
     public static class HoriRecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -29,8 +31,9 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecycl
 
     }
 
-    VertRVAdapter(Context context) {
+    VertRVAdapter(Context context, DisplayMetrics metrics) {
         this.context = context;
+        this.metrics = metrics;
 
 
     }
@@ -59,13 +62,13 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.HoriRecycl
         llm1.setOrientation(LinearLayoutManager.HORIZONTAL);
 
         horiRecyclerViewHolder.recyclerView.setLayoutManager(llm1);
-        horiRecyclerViewHolder.recyclerView.setLayoutParams(new RecyclerView.LayoutParams(600, 300));
+        horiRecyclerViewHolder.recyclerView.setLayoutParams(new RecyclerView.LayoutParams(metrics.widthPixels, 300));
         horiRecyclerViewHolder.recyclerView.setAdapter(adapter);
 
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 10;
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 
 /**
  * Created by ankitjain on 11/09/15.
@@ -26,7 +27,9 @@ public class VeriticalRecyclerViewActivity extends Activity {
 
 
     private void initializeAdapter(Context context) {
-        VertRVAdapter adapter = new VertRVAdapter(context);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        VertRVAdapter adapter = new VertRVAdapter(context, metrics);
         rv.setAdapter(adapter);
     }
 }
